@@ -1,0 +1,8 @@
+{
+	"auth": {
+		"droben": {
+			"service": "Cognito",
+			"providerPlugin": "awscloudformation"
+		}
+	}
+}

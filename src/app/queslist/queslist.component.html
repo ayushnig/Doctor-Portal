@@ -1,0 +1,207 @@
+<div class="main-content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 col-lg-6">
+                <div class="card">
+                    <div class="card-header card-header-rose card-header-icon">
+                        <div class="row">
+                            <div class="col-lg-8 col-md-8">
+                                <div class="card-icon">
+                                    <i class="material-icons">question_answer</i>
+                                </div>
+                                <h4 class="card-title">Questionaaire Templates</h4>
+                            </div>
+                            <div class="col-lg-2 col-md-2">
+                                <div class="text-right">
+                                    <button mat-raised-button (click)="addUser()" class="btn btn-rose btn-round">
+                                                    <i class="material-icons">add_circle</i> Add Question Template
+                                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card-body">
+
+                        <mat-action-list>
+                            <div class="row">
+                                <div class="col-lg-8 col-md-8">
+                                    <button mat-list-item (click)="openQuestion()"> Questions Template for Surgery A </button>
+                                </div>
+                                <div class="col-lg-4 col-md-4">
+                                    <div class="text-right">
+                                        <button mat-raised-button type="button" matTooltip="Edit Question" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">edit</i>
+                                        </button>
+                                        <button mat-raised-button type="button" matTooltip="Remove Question" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">close</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <mat-divider></mat-divider>
+                            <div class="row">
+                                <div class="col-lg-8 col-md-8">
+                                    <button mat-list-item (click)="createTemplate()"> Questions Template for Surgery B </button>
+                                </div>
+                                <div class="col-lg-4 col-md-4">
+                                    <div class="text-right">
+                                        <button mat-raised-button type="button" matTooltip="Edit Question" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">edit</i>
+                                        </button>
+                                        <button mat-raised-button type="button" matTooltip="Remove Question" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">close</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </mat-action-list>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6" *ngIf="show">
+                <div class="card">
+                    <div class="card-header card-header-rose card-header-icon">
+                        <div class="row">
+                            <div class="col-lg-8 col-md-8">
+
+                                <div class="card-icon">
+                                    <i class="material-icons">view_list</i>
+                                </div>
+                                <h4 class="card-title">Select Questions</h4>
+                            </div>
+                            <div class="col-lg-2 col-md-2">
+                                <div class="text-right">
+                                    <button mat-raised-button (click)="createTemplate()" class="btn btn-rose btn-round">
+                                                <i class="material-icons">add_circle</i> Add Question
+                                                </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+
+                            <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+                                <div class="example-box" *ngFor="let question of questions" cdkDrag>
+
+                                    <p>{{question}}</p>
+                                    <div class="text-right btn-group">
+                                        <button mat-raised-button type="button" matTooltip="Edit Question" [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">edit</i>
+                                        </button>
+                                        <button mat-raised-button type="button" matTooltip="Remove Question" [matTooltipPosition]="'above'" class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                            <i class="material-icons">close</i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!-- <mat-horizontal-stepper [linear]="isLinear" #stepper>
+                            <mat-step [stepControl]="firstFormGroup">
+                                <form [formGroup]="firstFormGroup">
+                                    <ng-template matStepLabel>Select the template</ng-template>
+                                    <div class="text-lg-left">
+                                        <button mat-raised-button type="button" matTooltip="Create Template" [matTooltipPosition]="'above'" class="btn btn-success btn-fill mat-raised-button" (click)="createTemplate()">
+                                                    <i class="material-icons">add</i>
+                                                </button>
+                                       
+                                        <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-fill mat-raised-button">
+                                              <i class="material-icons">close</i>
+                                          </button>
+                                    </div>
+                                    <mat-selection-list #todo>
+                                        <mat-list-option *ngFor="let todo of todos">
+                                            {{todo}}
+                                        </mat-list-option>
+                                    </mat-selection-list>
+                                    <div>
+                                        <button mat-button matStepperNext>Next</button>
+                                    </div>
+                                </form>
+                            </mat-step>
+                            <mat-step [stepControl]="secondFormGroup">
+                                <form [formGroup]="secondFormGroup">
+                                    <ng-template matStepLabel>Select the Questions</ng-template>
+                                    <div class="text-lg-left">
+                                        <button mat-raised-button type="button" matTooltip="Add Questions" [matTooltipPosition]="'above'" class="btn btn-success btn-fill mat-raised-button" (click)="createTemplate()">
+                                                        <i class="material-icons">add</i>
+                                                    </button>
+                                        <button mat-raised-button type="button" matTooltip="Edit Template" [matTooltipPosition]="'above'" class="btn btn-rose btn-fill mat-raised-button">
+                                                  <i class="material-icons">edit</i>
+                                              </button>
+                                        <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'" class="btn btn-danger btn-fill mat-raised-button">
+                                                  <i class="material-icons">close</i>
+                                              </button>
+                                    </div>
+                                    <mat-selection-list #todo>
+                                        <mat-list-option *ngFor="let question of questions">
+                                            {{question}}
+                                        </mat-list-option>
+                                    </mat-selection-list>
+                                    <div>
+                                        <button mat-button matStepperPrevious>Back</button>
+                                        <button mat-button matStepperNext>Next</button>
+                                    </div>
+                                </form>
+                            </mat-step>
+                            <mat-step>
+                                <ng-template matStepLabel>Done</ng-template>
+                                You are now done.
+                                <div>
+                                    <button mat-button matStepperPrevious>Back</button>
+                                    <button mat-button (click)="stepper.reset()">Reset</button>
+                                </div>
+                            </mat-step>
+                        </mat-horizontal-stepper> -->
+
+
+                    <!-- <div class="col-md-3 col-lg-3">
+                <div class="card">
+                    <div class="card-header card-header-rose card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons"></i>
+                        </div>
+                        <h4 class="card-title">Questionaaire Templates</h4>
+                        <p class="card-category">Select Questions</p>
+                    </div>
+                    <div class="card-body">
+                        <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo" [cdkDropListConnectedTo]="[doneList]" class="example-list" (cdkDropListDropped)="drop($event)">
+                            <div class="example-box" *ngFor="let item of todo" cdkDrag>{{item}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 col-lg-3">
+                <div class="card">
+                    <div class="card-header card-header-warning card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons"></i>
+                        </div>
+                        <h4 class="card-title">Questions</h4>
+                        <div class="card-body">
+
+                            <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[todoList]" class="example-list" (cdkDropListDropped)="drop($event)">
+                                <div class="example-box" *ngFor="let item of done" cdkDrag>{{item}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-6">
+                <div class="card">
+                    <div class="card-header card-header-warning card-header-icon">
+                        <div class="card-icon">
+                            <i class="material-icons"></i>
+                        </div>
+                        <h4 class="card-title">Done</h4>
+                        <div class="card-body">
+                            <tag-input [(ngModel)]='regularItems' theme='filled-theme'></tag-input>
+
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+                </div>
+            </div>
+        </div>
+    </div>

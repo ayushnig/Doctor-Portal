@@ -1,0 +1,16 @@
+.icon-primary {
+    background-color: #ffffff !important;
+    color: #ab47bc;
+    box-shadow: none;
+    display: block;
+}
+
+.icon-primary .material-icons {
+    font-size: 18px;
+    margin-left: 0.25em;
+}
+
+.icon-primary span {
+    color: #212529;
+    padding: 5px;
+}
